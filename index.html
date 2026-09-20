@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Salsabeel | Premium Dining & Nasi Kandar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-bg: #0D0D0D;
+            --card-bg: #1A1A1A;
+            --accent-red: #C82333;
+            --text-light: #F5F5F5;
+            --text-muted: #AAAAAA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Top Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(13, 13, 13, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Banner */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(13,13,13,1)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ddd;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+
+        .rating-badge {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 30px;
+            color: var(--gold);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Section Setup */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        /* Menu Showcase Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+        }
+
+        .menu-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .menu-details {
+            padding: 1.5rem;
+        }
+
+        .menu-details h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-details p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .stars {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer / Contact Details */
+        footer {
+            background: #050505;
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid #222;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p {
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #555;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #111;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav>
+        <div class="brand-name">Restaurant Salsabeel</div>
+        <ul class="nav-menu">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Ambience</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Restaurant Salsabeel</h1>
+        <p>Experience Authentic Flavors & Premium Dining 24/7</p>
+        <div class="rating-badge">
+            ★ 4.8 / 5.0 Rated by Guests
+        </div>
+    </section>
+
+    <!-- Menu Section (Right at top) -->
+    <section id="menu" class="section">
+        <div class="section-header">
+            <h2>Our Chef's Menu</h2>
+            <p>Prepared fresh with traditional spices</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80" alt="Nasi Kandar" class="menu-img">
+                <div class="menu-details">
+                    <h3>Signature Nasi Kandar</h3>
+                    <p>Fragrant steamed rice served with rich mixed curries and spiced fried chicken.</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="Briyani" class="menu-img">
+                <div class="menu-details">
+                    <h3>Nasi Briyani Special</h3>
+                    <p>Aromatic basmati rice cooked with authentic herbs and juicy chicken cutlets.</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80" alt="Naan Bread" class="menu-img">
+                <div class="menu-details">
+                    <h3>Butter Naan & Tandoori</h3>
+                    <p>Fresh clay-oven baked flatbreads served with flavorful tandoori chicken.</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=600&q=80" alt="Thosai" class="menu-img">
+                <div class="menu-details">
+                    <h3>Crispy South-Indian Thosai</h3>
+                    <p>Thin crepe served hot with coconut chutney and savory sambar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Photos -->
+    <section id="gallery" class="section">
+        <div class="section-header">
+            <h2>Restaurant Ambience</h2>
+            <p>Clean, comfortable, and welcoming environment</p>
+        </div>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Dining Area" class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Seating Area" class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80" alt="Food Display" class="gallery-img">
+        </div>
+    </section>
+
+    <!-- Top Reviews Section -->
+    <section id="reviews" class="section">
+        <div class="section-header">
+            <h2>Customer Highlights</h2>
+            <p>What our regular diners say about us</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★ 5.0</div>
+                <p>"Best Nasi Kandar in town! The curries are full of flavor, and service is quick."</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★ 5.0</div>
+                <p>"Very clean dining area and 24/7 service makes it my go-to late-night spot."</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★☆ 4.8</div>
+                <p>"Delicious food and friendly staff. Highly recommend the Biryani Ayam!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Full Contact Details at Bottom -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Restaurant Salsabeel</h4>
+                <p>Serving quality authentic dishes with passion. Open 24 Hours, 7 Days a week.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>24, Jalan Pandan Mewah,</p>
+                <p>Taman Pandan Mewah, 56100</p>
+                <p>Kuala Lumpur, Selangor</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact & Delivery</h4>
+                <p>Phone: +60 12-450 3786</p>
+                <p>Email: info@salsabeel.com</p>
+                <p>Online: Available on Foodpanda</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Restaurant Salsabeel. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+  </html>
